@@ -1,0 +1,17 @@
+Split Statistics
+===============
+Total businesses: 25957
+Total reviews: 668243
+Total users: 28989
+
+Train Split:
+  Users: 20292
+  Reviews: 469777
+
+Validation Split:
+  Users: 2898
+  Reviews: 67504
+
+Test Split:
+  Users: 5799
+  Reviews: 130962

@@ -1,0 +1,17 @@
+# Data Preparation Pipeline Requirements
+
+# Core data processing
+pandas>=1.5.0
+numpy>=1.21.0
+pyarrow>=10.0.0
+
+# Machine learning and NLP
+scikit-learn>=1.0.0
+transformers>=4.20.0
+torch>=1.12.0
+
+# Progress tracking
+tqdm>=4.60.0
+
+# Optional: for better performance
+torchvision>=0.13.0  # if using CUDA

@@ -1,0 +1,55 @@
+# 数据文件夹
+Yelp_data/
+
+# 可视化结果文件夹
+visualization_results/
+
+# EDA 输出文件夹
+eda_output/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv*/
+.python311/
+python-*.exe
+python-*.zip
+python311_install*.log
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 其他输出文件
+*.log
+*.out
+
+# 数据输出文件夹（包含大文件）
+outputs/
+
+# 训练输出
+artifacts/
+
+# 大文件（避免误提交到 GitHub）
+*.parquet
+*.pt
+*.pth
+*.ckpt
+

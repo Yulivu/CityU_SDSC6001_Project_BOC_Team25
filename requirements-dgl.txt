@@ -1,0 +1,9 @@
+numpy<2
+pandas>=1.5.0
+pyarrow>=10.0.0
+tqdm>=4.60.0
+packaging
+pyyaml
+pydantic
+torchdata==0.7.1
+dgl==2.2.1
