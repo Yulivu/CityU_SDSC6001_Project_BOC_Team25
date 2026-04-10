@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 
 
 @dataclass(frozen=True)
@@ -251,19 +252,248 @@ def _plot_one_history(exp_id: str, title: str, hist_path: Path, out_path: Path, 
 def _plot_overlay_val_ndcg(
     series: list[tuple[str, str, Path]], out_path: Path, dpi: int
 ) -> None:
-    fig, ax = plt.subplots(1, 1, figsize=(7.6, 4.2))
-    for exp_id, label, p in series:
+    label_by_exp = {
+        "baseline_popularity": "Popularity",
+        "baseline_bert_only": "BERT-only",
+        "mf_10e_es": "Matrix Factorization",
+        "full_10e_es": "Full (-GNN)",
+        "full_no_distance_10e_es": "Full (-Geography)",
+        "full_single_aspect_10e_es": "Full (-Multi-aspect)",
+        "magnn_no_aspect_cpu_10e_es": "MA-GNN (-Aspect)",
+        "magnn_no_social_cpu_10e_es": "MA-GNN (-Social)",
+        "magnn_full_cpu_10e_es": "MA-GNN Full",
+    }
+
+    mf = [t for t in series if t[0] == "mf_10e_es"]
+    top = [t for t in series if t[0] != "mf_10e_es"]
+
+    fig, (ax1, ax2) = plt.subplots(
+        2,
+        1,
+        figsize=(8.4, 6.2),
+        sharex=True,
+        gridspec_kw={"height_ratios": [3, 1]},
+    )
+
+    palette = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
+    color_by_exp: dict[str, str] = {}
+    p_i = 0
+    for exp_id, _label, _p in top:
+        if exp_id == "magnn_full_cpu_10e_es":
+            color_by_exp[exp_id] = "#111111"
+        else:
+            color_by_exp[exp_id] = palette[p_i % len(palette)]
+            p_i += 1
+
+    for exp_id, _label, p in top:
         h = _read_history(p)
-        ax.plot(h["epoch"], h["val_ndcg"], marker="o", linewidth=1.6, label=label)
-    ax.set_title("Val NDCG@10 vs Epoch")
-    ax.set_xlabel("Epoch")
-    ax.set_ylabel("Val NDCG@10")
-    ax.grid(True, alpha=0.25)
-    ax.legend(loc="best", fontsize=8)
+        label = label_by_exp.get(exp_id, _label)
+        lw = 2.8 if exp_id == "magnn_full_cpu_10e_es" else 1.7
+        ms = 5.0 if exp_id == "magnn_full_cpu_10e_es" else 4.0
+        ax1.plot(
+            h["epoch"],
+            h["val_ndcg"],
+            marker="o",
+            markersize=ms,
+            linewidth=lw,
+            color=color_by_exp.get(exp_id, None),
+            label=label,
+        )
+    ax1.set_title("Validation NDCG@10 vs Epoch")
+    ax1.set_ylabel("Val NDCG@10")
+    ax1.grid(True, alpha=0.25)
+    ax1.legend(loc="best", fontsize=8, ncols=2)
+
+    if mf:
+        exp_id, _label, p = mf[0]
+        h = _read_history(p)
+        ax2.plot(
+            h["epoch"],
+            h["val_ndcg"],
+            marker="o",
+            markersize=4.2,
+            linewidth=1.8,
+            color="#7f7f7f",
+            label=label_by_exp.get(exp_id, _label),
+        )
+        ax2.legend(loc="best", fontsize=8)
+
+    ax2.set_xlabel("Epoch")
+    ax2.set_ylabel("Val NDCG@10")
+    ax2.grid(True, alpha=0.25)
     _ensure_dir(out_path.parent)
     fig.tight_layout()
     fig.savefig(out_path, dpi=dpi)
     plt.close(fig)
+
+
+def _emit_summary_barplots_and_deltas(rows: list[ResultRow], report_dir: Path, dpi: int) -> None:
+    label_by_exp = {
+        "baseline_popularity": "Popularity",
+        "baseline_bert_only": "BERT-only",
+        "mf_10e_es": "Matrix Factorization",
+        "full_10e_es": "Full (-GNN)",
+        "full_no_distance_10e_es": "Full (-Geography)",
+        "full_single_aspect_10e_es": "Full (-Multi-aspect)",
+        "magnn_no_aspect_cpu_10e_es": "MA-GNN (-Aspect)",
+        "magnn_no_social_cpu_10e_es": "MA-GNN (-Social)",
+        "magnn_full_cpu_10e_es": "MA-GNN Full",
+    }
+    order = [
+        "baseline_popularity",
+        "baseline_bert_only",
+        "mf_10e_es",
+        "full_10e_es",
+        "full_no_distance_10e_es",
+        "full_single_aspect_10e_es",
+        "magnn_no_aspect_cpu_10e_es",
+        "magnn_no_social_cpu_10e_es",
+        "magnn_full_cpu_10e_es",
+    ]
+
+    by_exp_test = {r.exp_id: r for r in rows if r.split == "test"}
+    xs = []
+    labels = []
+    hr = []
+    ndcg = []
+    colors_baseline = "#c7c7c7"
+    colors_ablation = "#9ecae1"
+    color_highlight = "#08306b"
+    for i, exp_id in enumerate(order):
+        r = by_exp_test.get(exp_id)
+        if r is None:
+            continue
+        xs.append(i)
+        labels.append(label_by_exp.get(exp_id, exp_id))
+        hr.append(float(r.hr))
+        ndcg.append(float(r.ndcg))
+
+    if xs:
+        def annotate(ax: plt.Axes, bars: Any, vals: list[float]) -> None:
+            for b, v in zip(list(bars), vals):
+                ax.text(
+                    b.get_x() + b.get_width() / 2,
+                    b.get_height(),
+                    f"{v:.4f}",
+                    ha="center",
+                    va="bottom",
+                    fontsize=8,
+                    rotation=0,
+                )
+
+        baseline_names = {"Popularity", "BERT-only", "Matrix Factorization"}
+        baseline_idx = [i for i, lbl in enumerate(labels) if lbl in baseline_names]
+        ablation_idx = [i for i, lbl in enumerate(labels) if lbl not in baseline_names]
+
+        def plot_metric(values: list[float], ylabel: str, out_name: str, title: str) -> None:
+            fig, (ax_b, ax_a) = plt.subplots(
+                1,
+                2,
+                figsize=(12.6, 4.8),
+                gridspec_kw={"width_ratios": [1.0, 2.2]},
+            )
+
+            b_labels = [labels[i] for i in baseline_idx]
+            b_vals = [values[i] for i in baseline_idx]
+            a_labels = [labels[i] for i in ablation_idx]
+            a_vals = [values[i] for i in ablation_idx]
+
+            b_bars = ax_b.bar(range(len(b_vals)), b_vals, color=colors_baseline)
+            ax_b.set_title("Baselines")
+            ax_b.set_ylabel(ylabel)
+            ax_b.set_xticks(range(len(b_labels)))
+            ax_b.set_xticklabels(b_labels, rotation=20, ha="right")
+            ax_b.grid(True, axis="y", alpha=0.25)
+            if b_vals:
+                ax_b.set_ylim(0.0, max(b_vals) + 0.05)
+                annotate(ax_b, b_bars, b_vals)
+
+            a_colors = [colors_ablation] * len(a_vals)
+            for j, lbl in enumerate(a_labels):
+                if lbl == "MA-GNN Full":
+                    a_colors[j] = color_highlight
+            a_bars = ax_a.bar(range(len(a_vals)), a_vals, color=a_colors)
+            ax_a.set_title("Ablation Variants (Zoomed)")
+            ax_a.set_xticks(range(len(a_labels)))
+            ax_a.set_xticklabels(a_labels, rotation=20, ha="right")
+            ax_a.grid(True, axis="y", alpha=0.25)
+            if a_vals:
+                span = max(a_vals) - min(a_vals)
+                pad = max(0.002, span * 0.35)
+                ax_a.set_ylim(min(a_vals) - pad, max(a_vals) + pad)
+                annotate(ax_a, a_bars, a_vals)
+
+            fig.suptitle(title)
+            fig.legend(
+                handles=[
+                    Patch(facecolor=colors_baseline, label="Baselines"),
+                    Patch(facecolor=colors_ablation, label="Ablation Variants"),
+                    Patch(facecolor=color_highlight, label="MA-GNN Full"),
+                ],
+                loc="upper center",
+                bbox_to_anchor=(0.5, 1.02),
+                ncols=3,
+                fontsize=9,
+            )
+            _ensure_dir((report_dir / "figures").resolve())
+            fig.tight_layout()
+            fig.savefig(report_dir / "figures" / out_name, dpi=dpi)
+            plt.close(fig)
+
+        plot_metric(
+            hr,
+            ylabel="HR@10",
+            out_name="test_hr_bar.png",
+            title="Test HR@10: Baselines vs Ablation Variants",
+        )
+        plot_metric(
+            ndcg,
+            ylabel="NDCG@10",
+            out_name="test_ndcg_bar.png",
+            title="Test NDCG@10: Baselines vs Ablation Variants",
+        )
+
+    base = by_exp_test.get("magnn_full_cpu_10e_es")
+    if base is not None:
+        compare = [
+            "full_10e_es",
+            "full_no_distance_10e_es",
+            "full_single_aspect_10e_es",
+            "magnn_no_aspect_cpu_10e_es",
+            "magnn_no_social_cpu_10e_es",
+        ]
+        delta_labels = []
+        deltas = []
+        for exp_id in compare:
+            r = by_exp_test.get(exp_id)
+            if r is None:
+                continue
+            delta_labels.append(label_by_exp.get(exp_id, exp_id))
+            deltas.append(float(r.ndcg) - float(base.ndcg))
+
+        if deltas:
+            up = "#2ca02c"
+            down = "#d62728"
+            colors = [up if d >= 0 else down for d in deltas]
+            fig, ax = plt.subplots(1, 1, figsize=(10.0, 4.6))
+            ax.bar(range(len(deltas)), deltas, color=colors)
+            ax.axhline(0.0, color="#333333", linewidth=1.0)
+            ax.set_title("Ablation Delta vs MA-GNN Full (Test NDCG@10)")
+            ax.set_ylabel("Δ NDCG@10 (Model − MA-GNN Full)")
+            ax.set_xticks(range(len(delta_labels)))
+            ax.set_xticklabels(delta_labels, rotation=25, ha="right")
+            ax.grid(True, axis="y", alpha=0.25)
+            ax.legend(
+                handles=[
+                    Patch(facecolor=up, label="Higher than MA-GNN Full"),
+                    Patch(facecolor=down, label="Lower than MA-GNN Full"),
+                ],
+                loc="best",
+                fontsize=9,
+            )
+            fig.tight_layout()
+            fig.savefig(report_dir / "figures" / "ablation_delta_ndcg.png", dpi=dpi)
+            plt.close(fig)
 
 
 def _emit_curves(rows: list[ResultRow], root: Path, report_dir: Path, dpi: int) -> None:
@@ -316,6 +546,7 @@ def main() -> None:
     rows = _read_report_results(src)
     _emit_tables(rows, report_dir=report_dir)
     _emit_curves(rows, root=root, report_dir=report_dir, dpi=int(args.dpi))
+    _emit_summary_barplots_and_deltas(rows, report_dir=report_dir, dpi=int(args.dpi))
 
     print(f"saved tables/figures under: {report_dir}")
 
