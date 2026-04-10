@@ -424,17 +424,6 @@ def _emit_summary_barplots_and_deltas(rows: list[ResultRow], report_dir: Path, d
                 annotate(ax_a, a_bars, a_vals)
 
             fig.suptitle(title)
-            fig.legend(
-                handles=[
-                    Patch(facecolor=colors_baseline, label="Baselines"),
-                    Patch(facecolor=colors_ablation, label="Ablation Variants"),
-                    Patch(facecolor=color_highlight, label="MA-GNN Full"),
-                ],
-                loc="upper center",
-                bbox_to_anchor=(0.5, 1.02),
-                ncols=3,
-                fontsize=9,
-            )
             _ensure_dir((report_dir / "figures").resolve())
             fig.tight_layout()
             fig.savefig(report_dir / "figures" / out_name, dpi=dpi)
