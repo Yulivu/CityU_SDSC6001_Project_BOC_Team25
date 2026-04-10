@@ -1,0 +1,11 @@
+rank,business_id,name,categories,stars,review_count,score,is_ground_truth,match_dominant_aspect
+1,26jYcdFR5oLqKDKpTH0JIQ,Drago's Seafood Restaurant,"Restaurants, Desserts, Food, Salad, Seafood",4.0,1178.0,1.87716,1,1
+2,bp5Mk2d0qofUeF5uLauIbg,Chef Ron's Gumbo Stop,"Ethnic Food, Food, Cajun/Creole, Specialty Food, Comfort Food, Restaurants",4.5,1350.0,1.777095,0,1
+3,FkmUQqJCjgAYSlckQL0umw,Bobby Hebert's Cajun Cannon,"Seafood, American (New), Nightlife, Tapas/Small Plates, Soul Food, Sports Bars, Restaurants, Bars, Cajun/Creole",4.0,881.0,1.55359,0,1
+4,54XgUhaR0kDqw8bgbAEAtg,Los Jefes Tortilleria & Grill,"Seafood, Tex-Mex, Restaurants, Tacos, Mexican",4.0,585.0,1.535117,0,1
+5,IMWoj619K8ezUmFP8ktXEg,Banh Mi Boys,"Sandwiches, Vietnamese, Restaurants, Chicken Wings, American (Traditional)",4.5,503.0,1.497884,1,1
+6,Ppy-UN5RptIog4AvNnAM-g,Acme Oyster House,"Seafood, Sandwiches, Cajun/Creole, Restaurants",4.0,775.0,1.489711,1,1
+7,zrUAjvPlH22dnvNtxRuiBg,The Cheesecake Factory - Metairie,"Food, Restaurants, Beer, Wine & Spirits, Desserts, American (Traditional), Salad, Seafood, American (New)",2.5,426.0,1.434104,0,1
+8,iJJdgwK4wrX8-PjKZzOEvQ,New Orleans Food and Spirits,"Sandwiches, Restaurants, Salad, Seafood",4.0,443.0,1.390916,0,1
+9,HDnaNdHEZpQMYXo-ZHHG9g,Deanie’s Seafood,"Restaurants, Specialty Food, Seafood, Food, Seafood Markets, Cajun/Creole, American (Traditional), Caterers, Event Planning & Services",3.0,563.0,1.3809,0,1
+10,jIfRcC9Vd_bz66nVsoEMzA,Pho Orchid,"Vietnamese, Restaurants",4.0,348.0,1.343696,0,1

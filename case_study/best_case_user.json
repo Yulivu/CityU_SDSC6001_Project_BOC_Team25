@@ -1,0 +1,428 @@
+{
+  "user_id": "4kAKOaQL3W5z5nFXhhdvyQ",
+  "source_city": "New Orleans",
+  "target_city": "Metairie",
+  "source_n_reviews": 32,
+  "aspect_weights": [
+    {
+      "aspect": "food",
+      "n_reviews": 28,
+      "mean_stars": 4.071,
+      "variance": 0.638,
+      "w_k": 0.8337
+    },
+    {
+      "aspect": "service",
+      "n_reviews": 4,
+      "mean_stars": 3.5,
+      "variance": 2.25,
+      "w_k": 0.1663
+    },
+    {
+      "aspect": "atmosphere",
+      "n_reviews": 0,
+      "mean_stars": null,
+      "variance": null,
+      "w_k": 0.0
+    },
+    {
+      "aspect": "price",
+      "n_reviews": 0,
+      "mean_stars": null,
+      "variance": null,
+      "w_k": 0.0
+    }
+  ],
+  "dominant_aspect": "food",
+  "alignment": {
+    "magnn": {
+      "top_k": 5,
+      "aspect": "food",
+      "n_match": 5,
+      "matched": [
+        {
+          "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+          "name": "Drago's Seafood Restaurant",
+          "categories": "Restaurants, Desserts, Food, Salad, Seafood"
+        },
+        {
+          "business_id": "bp5Mk2d0qofUeF5uLauIbg",
+          "name": "Chef Ron's Gumbo Stop",
+          "categories": "Ethnic Food, Food, Cajun/Creole, Specialty Food, Comfort Food, Restaurants"
+        },
+        {
+          "business_id": "FkmUQqJCjgAYSlckQL0umw",
+          "name": "Bobby Hebert's Cajun Cannon",
+          "categories": "Seafood, American (New), Nightlife, Tapas/Small Plates, Soul Food, Sports Bars, Restaurants, Bars, Cajun/Creole"
+        },
+        {
+          "business_id": "54XgUhaR0kDqw8bgbAEAtg",
+          "name": "Los Jefes Tortilleria & Grill",
+          "categories": "Seafood, Tex-Mex, Restaurants, Tacos, Mexican"
+        },
+        {
+          "business_id": "IMWoj619K8ezUmFP8ktXEg",
+          "name": "Banh Mi Boys",
+          "categories": "Sandwiches, Vietnamese, Restaurants, Chicken Wings, American (Traditional)"
+        }
+      ]
+    },
+    "popularity": {
+      "top_k": 5,
+      "aspect": "food",
+      "n_match": 5,
+      "matched": [
+        {
+          "business_id": "bp5Mk2d0qofUeF5uLauIbg",
+          "name": "Chef Ron's Gumbo Stop",
+          "categories": "Ethnic Food, Food, Cajun/Creole, Specialty Food, Comfort Food, Restaurants"
+        },
+        {
+          "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+          "name": "Drago's Seafood Restaurant",
+          "categories": "Restaurants, Desserts, Food, Salad, Seafood"
+        },
+        {
+          "business_id": "FkmUQqJCjgAYSlckQL0umw",
+          "name": "Bobby Hebert's Cajun Cannon",
+          "categories": "Seafood, American (New), Nightlife, Tapas/Small Plates, Soul Food, Sports Bars, Restaurants, Bars, Cajun/Creole"
+        },
+        {
+          "business_id": "Ppy-UN5RptIog4AvNnAM-g",
+          "name": "Acme Oyster House",
+          "categories": "Seafood, Sandwiches, Cajun/Creole, Restaurants"
+        },
+        {
+          "business_id": "54XgUhaR0kDqw8bgbAEAtg",
+          "name": "Los Jefes Tortilleria & Grill",
+          "categories": "Seafood, Tex-Mex, Restaurants, Tacos, Mexican"
+        }
+      ]
+    }
+  },
+  "magnn_top10": [
+    {
+      "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+      "name": "Drago's Seafood Restaurant",
+      "categories": "Restaurants, Desserts, Food, Salad, Seafood",
+      "stars": 4.0,
+      "review_count": 1178.0,
+      "score": 1.87716
+    },
+    {
+      "business_id": "bp5Mk2d0qofUeF5uLauIbg",
+      "name": "Chef Ron's Gumbo Stop",
+      "categories": "Ethnic Food, Food, Cajun/Creole, Specialty Food, Comfort Food, Restaurants",
+      "stars": 4.5,
+      "review_count": 1350.0,
+      "score": 1.777095
+    },
+    {
+      "business_id": "FkmUQqJCjgAYSlckQL0umw",
+      "name": "Bobby Hebert's Cajun Cannon",
+      "categories": "Seafood, American (New), Nightlife, Tapas/Small Plates, Soul Food, Sports Bars, Restaurants, Bars, Cajun/Creole",
+      "stars": 4.0,
+      "review_count": 881.0,
+      "score": 1.55359
+    },
+    {
+      "business_id": "54XgUhaR0kDqw8bgbAEAtg",
+      "name": "Los Jefes Tortilleria & Grill",
+      "categories": "Seafood, Tex-Mex, Restaurants, Tacos, Mexican",
+      "stars": 4.0,
+      "review_count": 585.0,
+      "score": 1.535117
+    },
+    {
+      "business_id": "IMWoj619K8ezUmFP8ktXEg",
+      "name": "Banh Mi Boys",
+      "categories": "Sandwiches, Vietnamese, Restaurants, Chicken Wings, American (Traditional)",
+      "stars": 4.5,
+      "review_count": 503.0,
+      "score": 1.497884
+    },
+    {
+      "business_id": "Ppy-UN5RptIog4AvNnAM-g",
+      "name": "Acme Oyster House",
+      "categories": "Seafood, Sandwiches, Cajun/Creole, Restaurants",
+      "stars": 4.0,
+      "review_count": 775.0,
+      "score": 1.489711
+    },
+    {
+      "business_id": "zrUAjvPlH22dnvNtxRuiBg",
+      "name": "The Cheesecake Factory - Metairie",
+      "categories": "Food, Restaurants, Beer, Wine & Spirits, Desserts, American (Traditional), Salad, Seafood, American (New)",
+      "stars": 2.5,
+      "review_count": 426.0,
+      "score": 1.434104
+    },
+    {
+      "business_id": "iJJdgwK4wrX8-PjKZzOEvQ",
+      "name": "New Orleans Food and Spirits",
+      "categories": "Sandwiches, Restaurants, Salad, Seafood",
+      "stars": 4.0,
+      "review_count": 443.0,
+      "score": 1.390916
+    },
+    {
+      "business_id": "HDnaNdHEZpQMYXo-ZHHG9g",
+      "name": "Deanie’s Seafood",
+      "categories": "Restaurants, Specialty Food, Seafood, Food, Seafood Markets, Cajun/Creole, American (Traditional), Caterers, Event Planning & Services",
+      "stars": 3.0,
+      "review_count": 563.0,
+      "score": 1.3809
+    },
+    {
+      "business_id": "jIfRcC9Vd_bz66nVsoEMzA",
+      "name": "Pho Orchid",
+      "categories": "Vietnamese, Restaurants",
+      "stars": 4.0,
+      "review_count": 348.0,
+      "score": 1.343696
+    }
+  ],
+  "popularity_top10": [
+    {
+      "business_id": "bp5Mk2d0qofUeF5uLauIbg",
+      "name": "Chef Ron's Gumbo Stop",
+      "categories": "Ethnic Food, Food, Cajun/Creole, Specialty Food, Comfort Food, Restaurants",
+      "stars": 4.5,
+      "review_count": 1350.0
+    },
+    {
+      "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+      "name": "Drago's Seafood Restaurant",
+      "categories": "Restaurants, Desserts, Food, Salad, Seafood",
+      "stars": 4.0,
+      "review_count": 1178.0
+    },
+    {
+      "business_id": "FkmUQqJCjgAYSlckQL0umw",
+      "name": "Bobby Hebert's Cajun Cannon",
+      "categories": "Seafood, American (New), Nightlife, Tapas/Small Plates, Soul Food, Sports Bars, Restaurants, Bars, Cajun/Creole",
+      "stars": 4.0,
+      "review_count": 881.0
+    },
+    {
+      "business_id": "Ppy-UN5RptIog4AvNnAM-g",
+      "name": "Acme Oyster House",
+      "categories": "Seafood, Sandwiches, Cajun/Creole, Restaurants",
+      "stars": 4.0,
+      "review_count": 775.0
+    },
+    {
+      "business_id": "54XgUhaR0kDqw8bgbAEAtg",
+      "name": "Los Jefes Tortilleria & Grill",
+      "categories": "Seafood, Tex-Mex, Restaurants, Tacos, Mexican",
+      "stars": 4.0,
+      "review_count": 585.0
+    },
+    {
+      "business_id": "HDnaNdHEZpQMYXo-ZHHG9g",
+      "name": "Deanie’s Seafood",
+      "categories": "Restaurants, Specialty Food, Seafood, Food, Seafood Markets, Cajun/Creole, American (Traditional), Caterers, Event Planning & Services",
+      "stars": 3.0,
+      "review_count": 563.0
+    },
+    {
+      "business_id": "IMWoj619K8ezUmFP8ktXEg",
+      "name": "Banh Mi Boys",
+      "categories": "Sandwiches, Vietnamese, Restaurants, Chicken Wings, American (Traditional)",
+      "stars": 4.5,
+      "review_count": 503.0
+    },
+    {
+      "business_id": "iJJdgwK4wrX8-PjKZzOEvQ",
+      "name": "New Orleans Food and Spirits",
+      "categories": "Sandwiches, Restaurants, Salad, Seafood",
+      "stars": 4.0,
+      "review_count": 443.0
+    },
+    {
+      "business_id": "zrUAjvPlH22dnvNtxRuiBg",
+      "name": "The Cheesecake Factory - Metairie",
+      "categories": "Food, Restaurants, Beer, Wine & Spirits, Desserts, American (Traditional), Salad, Seafood, American (New)",
+      "stars": 2.5,
+      "review_count": 426.0
+    },
+    {
+      "business_id": "hUl_zNzmwMd8TD8pPL81pg",
+      "name": "That's Amore Pizzeria",
+      "categories": "Restaurants, Italian, Pizza",
+      "stars": 4.5,
+      "review_count": 379.0
+    }
+  ],
+  "ground_truth": [
+    {
+      "business_id": "VOEN8f9WEysinBsLqbiVqg",
+      "name": "Andrea's Restaurant",
+      "categories": "Venues & Event Spaces, Italian, Event Planning & Services, Restaurants, Party & Event Planning, Seafood, Caterers",
+      "stars": 2.5,
+      "review_count": 218
+    },
+    {
+      "business_id": "0ndzIekJs0PRPA5Aoz9sow",
+      "name": "Morning Call Coffee Stand",
+      "categories": "Coffee & Tea, Restaurants, Food",
+      "stars": 4.0,
+      "review_count": 180
+    },
+    {
+      "business_id": "jPZN2irnNhZfPaFA3XayMg",
+      "name": "Albasha Greek & Lebanese Café",
+      "categories": "Middle Eastern, Greek, Restaurants, Lebanese, Mediterranean",
+      "stars": 4.0,
+      "review_count": 132
+    },
+    {
+      "business_id": "KLBWUdr0nrrK2mPBj0qg_A",
+      "name": "Wishing Town Bakery Cafe",
+      "categories": "Restaurants, Bubble Tea, Patisserie/Cake Shop, Cafeteria, Coffee & Tea, Food, Cafes, Bakeries, Breakfast & Brunch",
+      "stars": 4.5,
+      "review_count": 56
+    },
+    {
+      "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+      "name": "Drago's Seafood Restaurant",
+      "categories": "Restaurants, Desserts, Food, Salad, Seafood",
+      "stars": 4.0,
+      "review_count": 1178
+    },
+    {
+      "business_id": "Ppy-UN5RptIog4AvNnAM-g",
+      "name": "Acme Oyster House",
+      "categories": "Seafood, Sandwiches, Cajun/Creole, Restaurants",
+      "stars": 4.0,
+      "review_count": 775
+    },
+    {
+      "business_id": "BWK7MAUayTZlQ_3PJeaudg",
+      "name": "Atomic Burger",
+      "categories": "Burgers, Restaurants, Fast Food, Desserts, American (Traditional), Food",
+      "stars": 4.0,
+      "review_count": 333
+    },
+    {
+      "business_id": "IWHscMR1NaaLDy6g5lpnkg",
+      "name": "Pho NOLA",
+      "categories": "Vietnamese, Restaurants",
+      "stars": 4.0,
+      "review_count": 242
+    },
+    {
+      "business_id": "MbNcVhRqpNPcvgFzWgaxSQ",
+      "name": "MOOYAH Burgers, Fries & Shakes",
+      "categories": "Food, Hot Dogs, Ice Cream & Frozen Yogurt, Burgers, Restaurants",
+      "stars": 4.0,
+      "review_count": 195
+    },
+    {
+      "business_id": "1QCZS_3x7_JLekGJAqnhMQ",
+      "name": "Gogi Korean Restaurant",
+      "categories": "Korean, Restaurants",
+      "stars": 4.0,
+      "review_count": 230
+    },
+    {
+      "business_id": "ct-VF8Yqj4GlxEHZ23Arig",
+      "name": "Blue Line Sandwich",
+      "categories": "Sandwiches, Salad, Breakfast & Brunch, Restaurants",
+      "stars": 4.0,
+      "review_count": 192
+    },
+    {
+      "business_id": "kDmeq29jdwm-XatR2tCCYQ",
+      "name": "Kanno California Sushi Bar",
+      "categories": "Soup, Salad, Restaurants, Sushi Bars",
+      "stars": 4.5,
+      "review_count": 202
+    },
+    {
+      "business_id": "n8NLEmKuhUr4fplfjJdTjw",
+      "name": "Shake Shack",
+      "categories": "Fast Food, Restaurants, Burgers, American (Traditional)",
+      "stars": 3.5,
+      "review_count": 203
+    },
+    {
+      "business_id": "eA9p9OXvrdQI1J1jxVsRlQ",
+      "name": "Pho Michael",
+      "categories": "Food, Juice Bars & Smoothies, Salad, Beer Bar, Nightlife, Soup, Bubble Tea, Vietnamese, Bars, Restaurants",
+      "stars": 4.5,
+      "review_count": 293
+    },
+    {
+      "business_id": "d89jkOMbjpTBerh7miCz2w",
+      "name": "NoLaKorea Korean Restaurant",
+      "categories": "Restaurants, Korean",
+      "stars": 4.5,
+      "review_count": 98
+    },
+    {
+      "business_id": "IMWoj619K8ezUmFP8ktXEg",
+      "name": "Banh Mi Boys",
+      "categories": "Sandwiches, Vietnamese, Restaurants, Chicken Wings, American (Traditional)",
+      "stars": 4.5,
+      "review_count": 503
+    },
+    {
+      "business_id": "mTvb9By6kzoVkPtQbrsUSg",
+      "name": "Thai Ocha",
+      "categories": "Thai, Restaurants, Sushi Bars, Japanese",
+      "stars": 4.5,
+      "review_count": 169
+    },
+    {
+      "business_id": "hGsITEITVK7LkZQeNv-Fpw",
+      "name": "A Tavola Restaurant & Wine Bar",
+      "categories": "Bars, Restaurants, Wine Bars, Italian, Nightlife",
+      "stars": 4.0,
+      "review_count": 116
+    },
+    {
+      "business_id": "Emx4WOk_NtZIo3DW4QBubg",
+      "name": "Popeyes Louisiana Kitchen",
+      "categories": "Sandwiches, Chicken Wings, Food, Desserts, Seafood, Fast Food, Restaurants",
+      "stars": 1.5,
+      "review_count": 25
+    }
+  ],
+  "gt_in_magnn": [
+    {
+      "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+      "rank": 1
+    },
+    {
+      "business_id": "IMWoj619K8ezUmFP8ktXEg",
+      "rank": 5
+    },
+    {
+      "business_id": "Ppy-UN5RptIog4AvNnAM-g",
+      "rank": 6
+    }
+  ],
+  "gt_in_popularity": [
+    {
+      "business_id": "26jYcdFR5oLqKDKpTH0JIQ",
+      "rank": 2
+    },
+    {
+      "business_id": "Ppy-UN5RptIog4AvNnAM-g",
+      "rank": 4
+    },
+    {
+      "business_id": "IMWoj619K8ezUmFP8ktXEg",
+      "rank": 7
+    }
+  ],
+  "case_score": 2.6397,
+  "dominant_w": 0.8337,
+  "match_gain_top5": 0,
+  "best_gt_rank_magnn": 1,
+  "best_gt_rank_popularity": 2,
+  "var_min": 0.638,
+  "var_max": 2.25,
+  "var_diff": 1.612
+}
